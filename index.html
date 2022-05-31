@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+      <p style="margin-left: 500px;"><input type="search" name="q" placeholder="Поиск по сайту"> 
+      <input type="submit" value="Найти"></p>
+  </head>
+  <body>
+    <!-- Side navigation -->
+    <div class="sidenav">
+      <h1 style="color: red;">speck</h1>
+      <input type="checkbox" >
+      <label >checkbox</label>
+      <input type="checkbox" >
+      <label >checkbox</label>
+      <input type="checkbox" >
+      <label >checkbox</label>
+      <input type="checkbox" >
+      <label >checkbox</label>
+      <input type="checkbox" >
+      <label >checkbox</label>
+      <input type="checkbox" >
+    </div>
+
+    <div id="root" class="main"></div>
+
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+<style>
+  .pagination{
+    margin-left: 400px;
+  }
+  /* Pagination links */
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+/* Style the active/current link */
+.pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+/* Add a grey background color on mouse-over */
+.pagination a:hover:not(.active) {background-color: #ddd;}
+  /* The sidebar menu */
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav input {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav label {
+color: red;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Style page content */
+.main {
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+</style>
