@@ -1,32 +1,47 @@
 import { useParams, useSearchParams } from "react-router-dom";
 import { useQuery, gql } from 'urql';
+import Footer from "../components/Footer"
 const TodosQuery = gql`
-query GetProduct($id: ID!){
-  Products_by_id(id: $id){
-    id
-    title
-    price
+query GetProduct($offset: Int){
+    products(limit: 4, offset: $offset) {
+      id
+      title
+      price
+    }
   }
-}
 `;
 
+const  nnext = (e) =>{
+  window.location.href = `/products/${e.target.value}` 
+}
 
 
-export default function Product() {
-
+export default function Products() {
   const params = useParams()
   const [result, reexecuteQuery] = useQuery({
-    query: TodosQuery, variables: { id: params.id }
+    query: TodosQuery, variables: { offset: params.id * 4 }
   });
+
   const { data, fetching, error } = result;
 
   if (fetching) return <p>Loading...</p>;
   if (error) return <p>Oh no... {error.message}</p>;
   return (
     <div>
-      <p>{data.Products_by_id.id}</p>
-      <p>{data.Products_by_id.title}</p>
-      <p>{data.Products_by_id.price}</p>
+      {
+        data.products.map(p => (
+          <div key={p.id}>
+            <p>{p.id}</p>
+            <p>{p.title}</p>
+            <p>{p.price}</p>
+            <button value={p.id} onClick={nnext}>next</button>
+          </div>
+        ))
+      }
+      <Footer/>
+
     </div>
+
+    
   )
 }
